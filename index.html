@@ -1,0 +1,67 @@
+# Create an HTML page with the prioritized list of unfinished games
+html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prioritized Unfinished Games</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        h1 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Prioritized Unfinished Games</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Platform</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Format</th>
+                <th>Ownership</th>
+                <th>Last Updated</th>
+                <th>Estimated Completion Time</th>
+                <th>Genre</th>
+                <th>Quality</th>
+            </tr>
+        </thead>
+        <tbody>
+"""
+
+# Adding rows for each game
+for _, game in unfinished_games_sorted.iterrows():
+    html_content += f"""
+            <tr>
+                <td>{game['Title']}</td>
+                <td>{game['Platform']}</td>
+                <td>{game['Status']}</td>
+                <td>{game['Priority']}</td>
+                <td>{game['Format']}</td>
+                <td>{game['Ownership']}</td>
+                <td>{game['Last Updated']}</td>
+                <td>{game['Estimated Completion Time']}</td>
+                <td>{game['Genre']}</td>
+                <td>{game['Quality']}</td>
+            </tr>
+    """
+
+# Closing the HTML content
+html_content += """
+        </tbody>
+    </table>
+</body>
+</html>
+"""
+
+# Save the HTML content to a file
+html_file_path = '/mnt/data/prioritized_unfinished_games.html'
+with open(html_file_path, 'w') as file:
+    file.write(html_content)
+
+html_file_path
